@@ -2,21 +2,34 @@
 
 import { AiOutlineMenu } from "react-icons/ai"
 import Avatar from "../Avatar";
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import useInfoModal from "@/app/hooks/useInfoModal";
+import { signOut } from "next-auth/react";
+import IUser from "@/app/interfaces/IUser";
 
-const UserMenu = () => {
+interface UserMenuProps {
+    currentUser?: IUser | null
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({
+    currentUser
+}) => {
+    const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
+    const infoModal = useInfoModal();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
     }, [])
-
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
-                    onClick={() => {}}
+                    onClick={infoModal.onOpen}
                     className="
                         hidden
                         md:block
@@ -72,16 +85,35 @@ const UserMenu = () => {
                     text-sm
                 ">
                     <div className="flex flex-col cursor-pointer">
-                        <>
-                            <MenuItem
-                                onClick={() => {}}
-                                label="Login"
-                            />
-                            <MenuItem
-                                onClick={() => {}}
-                                label="Sign up"
-                            />
-                        </>
+                        {currentUser ? (
+                            <>
+                                <MenuItem
+                                    hidden
+                                    onClick={infoModal.onOpen}
+                                    label="Informações"
+                                />
+                                <MenuItem
+                                    hidden
+                                    onClick={() => {}}
+                                    label="Cadastrar Documentos"
+                                />
+                                <MenuItem
+                                    onClick={() => signOut()}
+                                    label="Sair"
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <MenuItem
+                                    onClick={loginModal.onOpen}
+                                    label="Entrar"
+                                />
+                                <MenuItem
+                                    onClick={registerModal.onOpen}
+                                    label="Cadastrar"
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
             )}
