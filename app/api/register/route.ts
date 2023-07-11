@@ -28,12 +28,18 @@ export async function POST(request: Request) {
     
     const isEmailUsed = await isEmailAlreadyUsed(email);
     if (isEmailUsed) {
-      return NextResponse.json({ error: "Email já está em uso" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Email já está em uso" },
+        { status: 400 }
+      );
     }
 
     const isAdminIdUsed = await isAdminIdAlreadyUsed(admin_id);
     if (isAdminIdUsed) {
-      return NextResponse.json({ error: "Esse administrador já foi cadastrado" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Esse administrador já foi cadastrado" },
+        { status: 400 }
+      );
     }
 
     const isUsernameUsed = await isUsernameAlreadyUsed(username);

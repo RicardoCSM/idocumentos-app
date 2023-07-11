@@ -7,6 +7,7 @@ interface InputProps {
     id: string;
     label: string;
     type?: string;
+    accept?: string;
     disabled?: boolean;
     required?: boolean;
     register: UseFormRegister<FieldValues>;
@@ -17,6 +18,7 @@ const Input: React.FC<InputProps> = ({
     id,
     label,
     type = "text",
+    accept,
     disabled,
     required,
     register,
@@ -37,12 +39,14 @@ const Input: React.FC<InputProps> = ({
                 id={id}
                 disabled={disabled}
                 {... register(id, {required})}
+                accept={accept}
                 placeholder=" "
                 type={type}
                 className={`
                     peer
                     w-full
-                    p-2
+                    p-1
+                    sm:p-2
                     font-light
                     bg-white
                     border-2

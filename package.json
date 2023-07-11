@@ -33,6 +33,7 @@
     "zustand": "^4.3.9"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0"
+    "@types/bcrypt": "^5.0.0",
+    "@types/formidable": "^3.4.0"
   }
 }

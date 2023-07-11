@@ -3,7 +3,6 @@
 const AdminMenu = () => {
   return ( 
     <div
-      onClick={() => {}}
       className="
         border-[1px] 
         w-full 
@@ -25,7 +24,8 @@ const AdminMenu = () => {
           sm:justify-between
         "
       >
-        <div 
+        <div
+          onClick={() => {}}
           className="
             text-sm
             text-white 
@@ -33,9 +33,10 @@ const AdminMenu = () => {
             px-6
           "
         >
-            Listar Documentos
+            Listar documentos
         </div>
         <div 
+          onClick={() => {}}
           className="
             hidden 
             sm:block 
@@ -48,7 +49,7 @@ const AdminMenu = () => {
             text-center
           "
         >
-            Cadastrar Documentos
+            Enviar documentos
         </div>
       </div>
     </div>

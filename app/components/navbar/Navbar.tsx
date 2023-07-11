@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({
     currentUser
 }) => {
     return (
-        <div className="fixed w-full border-t-[3px] border-blue-800 bg-blue-600 z-10 shadow-sm">
+        <div className="w-full border-t-[3px] border-blue-800 bg-blue-600 z-10 shadow-sm">
             <div className="py-3 border-b-[1px]">
                 <Container>
                     <div

@@ -5,11 +5,12 @@ import { IconType } from "react-icons";
 
 interface ButtonProps {
     label: string;
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     disabled?: boolean;
     outline?: boolean;
     small?: boolean;
     icon?: IconType;
+    type?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,13 +19,15 @@ const Button: React.FC<ButtonProps> = ({
     disabled,
     outline,
     small,
-    icon: Icon
+    icon: Icon,
+    type = "button"
 }) => {
 
     return(
         <button
             onClick={onClick}
             disabled={disabled}
+            type={type}
             className={`
                 relative
                 disabled:opacity-70
