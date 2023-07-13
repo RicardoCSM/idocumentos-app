@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "admin_id": 1,
+      "username": "Admin",
+      "hashedPassword": "$2b$12$Ysb7.9Rm9q2kD2VkXLYpv.0HAtkQbsBpm/5A270/vgCqYpnKNuX1O",
+      "id": "7c51cd80-098d-4fbe-9fa5-49f9c541eee0"
+    }
+  ],
+  "documents": [
+    
+  ],
+  "admins": [
+    {
+      "admin": 151483512,
+      "categorie": 1,
+      "id": "2dee7d0e-b5ce-47f2-85db-f81a155cbfb8"
+    },
+    {
+      "admin": 348519383,
+      "categorie": 2,
+      "id": "9969443f-c77a-40d5-8521-d639e1b5db2b"
+    },
+    {
+      "admin": 306668901,
+      "categorie": 3,
+      "id": "c8910fc6-e70c-4570-8c43-cd12c6dd4a29"
+    },
+    {
+      "admin": 1,
+      "categorie": 4,
+      "id": "fb4fa32a-76cc-4bcc-9459-1c62c431fe31"
+    }
+  ]
+}

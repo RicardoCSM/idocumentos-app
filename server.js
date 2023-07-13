@@ -1,6 +1,6 @@
 const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router('db.json');
+const router = jsonServer.router('data/db.json');
 const middlewares = jsonServer.defaults();
 const uuid = require('uuid');
 
@@ -8,7 +8,7 @@ server.use(middlewares);
 
 server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
-  if (req.method === 'POST' && req.path === '/users' || req.path === '/documents') {
+  if (req.method === 'POST' && req.path === '/users' || req.path === '/documents' || req.path === '/admins') {
     req.body.id = uuid.v4();
   }
   next();

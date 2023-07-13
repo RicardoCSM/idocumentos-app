@@ -16,6 +16,7 @@ interface Document {
   category: number;
   subcategory: number;
   description: string;
+  admin: string;
 }
 
 const DocumentList = () => {
@@ -64,6 +65,7 @@ const DocumentList = () => {
           subcategory={document.subcategory}
           description={document.description}
           document={document.document}
+          admin={document.admin}
           onSubmitSuccess={fetchDocuments}
         />
       ))}
@@ -71,7 +73,7 @@ const DocumentList = () => {
       <Pagination
         setCurrentPage={handlePageChange}
         currentPage={currentPage}
-        totalPages={totalPages} // Atualize com o número total de documentos
+        totalPages={totalPages}
       />
     </div>
   );

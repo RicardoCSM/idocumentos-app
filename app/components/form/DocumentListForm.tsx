@@ -16,6 +16,7 @@ interface DocumentProps {
     name: string;
     email: string;
     document: string;
+    admin: string;
     category: number;
     subcategory: number;
     description: string;
@@ -49,6 +50,7 @@ const DocumentListForm: React.FC<DocumentProps> = ({
     name,
     email,
     document,
+    admin,
     category,
     subcategory,
     description,
@@ -135,8 +137,8 @@ const DocumentListForm: React.FC<DocumentProps> = ({
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row">
-                    <div className="w-64 p-1 text-lg font-bold mx-2 text-gray-800">Usuário responsável:
-                        <div className="text-sm font-normal leading-none text-gray-500">Administrador Master</div>
+                    <div className="w-64 p-1 text-lg font-bold mx-2 text-gray-800">Administrador responsável:
+                        <div className="text-sm font-normal leading-none text-gray-500">{admin}</div>
                     </div>
                     <div className="flex-1 p-1 flex flex-col md:flex-row">
                         <Button label="Salvar" onClick={onSubmit}/>
