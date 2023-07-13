@@ -1,11 +1,10 @@
-'use client'
+'use client';
 
 import React from "react";
 import Container from "../Container";
 import Logo from "./Logo";
 import UserMenu from "./UserMenu";
 import IUser from "@/app/interfaces/IUser";
-import AdminMenu from "./AdminMenu";
 
 interface NavbarProps {
     currentUser?: IUser | null
@@ -29,9 +28,6 @@ const Navbar: React.FC<NavbarProps> = ({
                         "
                     >
                         <Logo />
-                        {currentUser ? (
-                            <AdminMenu />
-                        ) : ''}
                         <UserMenu currentUser={currentUser}/>
                     </div>
                 </Container>

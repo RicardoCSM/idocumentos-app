@@ -50,7 +50,7 @@ const LoginModal = () => {
             }
 
             if(callback?.error) {
-                toast.error(callback.error);
+                toast.error('Usuário ou senha incorreto!');
             }
         })
     }

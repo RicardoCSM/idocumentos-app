@@ -2,7 +2,7 @@
 
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import categories from '@/data/categories.json';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import Button from '../Button';
@@ -18,12 +18,11 @@ interface Subcategory {
 }
 
 const DocumentForm = () => {
-  const router = useRouter(); 
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm<FieldValues>({
     defaultValues: {
       name: '',
@@ -36,7 +35,8 @@ const DocumentForm = () => {
   });
 
   const [subcategories, setSubcategories] = useState<Subcategory[]>([]);
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const categoryId = parseInt(event.target.value, 10);
     const selectedCategory = categories.categorias.find(
@@ -51,6 +51,7 @@ const DocumentForm = () => {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setIsLoading(true);
     const file = data.document[0];
   
     const formData = new FormData();
@@ -62,24 +63,24 @@ const DocumentForm = () => {
       },
     })
     .then((response) => {
-      const filePath = response.data.filePath;
+      const documentName = response.data.fileName;
       
       axios.post('/api/documents', {
         name: data.name,
         email: data.email,
-        document: filePath,
-        category: data.category,
-        subcategory: data.subcategory,
+        document: documentName,
+        category: Number(data.category),
+        subcategory: Number(data.subcategory),
         description: data.description
       })
         .then(() => {
+          setIsLoading(false);
           toast.success('Documento enviado com sucesso');
-          router.refresh();
         })
         .catch((error) => {
           toast.error(error.response.data.error);
         });
-
+        reset();
     })
     .catch((error) => {
         toast.error(error.response.data.error);
@@ -95,6 +96,7 @@ const DocumentForm = () => {
             <Input
               id="name"
               label="Nome"
+              disabled={isLoading}
               register={register}
               errors={errors}
               required
@@ -106,6 +108,7 @@ const DocumentForm = () => {
             <Input
               id="email"
               label="E-mail"
+              disabled={isLoading}
               register={register}
               errors={errors}
               required
@@ -119,6 +122,7 @@ const DocumentForm = () => {
               label="Arquivo do documento incorreto:"
               type="file"
               accept='.pdf, .rtf'
+              disabled={isLoading}
               register={register}
               errors={errors}
               required
@@ -134,6 +138,7 @@ const DocumentForm = () => {
                 value: categoria.id,
                 label: categoria.nome,
               }))}
+              disabled={isLoading}
               register={register}
               errors={errors}
               required
@@ -148,6 +153,7 @@ const DocumentForm = () => {
                 value: subcategoria.id,
                 label: subcategoria.nome,
               }))}
+              disabled={isLoading}
               register={register}
               errors={errors}
               required
@@ -159,6 +165,7 @@ const DocumentForm = () => {
             <TextArea
               id="description"
               label="Descrição"
+              disabled={isLoading}
               register={register}
               errors={errors}
               required

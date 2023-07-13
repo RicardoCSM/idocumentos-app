@@ -1,14 +1,8 @@
 {
   "users": [
-    {
-      "email": "ricardo@teste.com",
-      "admin_id": "123",
-      "username": "Ricardo",
-      "hashedPassword": "$2b$12$SyagpHshoqSw/boVEkxfmeulCtaz3vaFnTVIfmVD5B3MDf76QLpuS",
-      "id": "786f866d-398d-492e-85de-59ea285aa2eb"
-    }
+    
   ],
   "documents": [
-
+    
   ]
 }

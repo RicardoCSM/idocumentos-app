@@ -6,8 +6,17 @@ export async function POST(request: Request) {
 
   try {
     const { name, email, document, category, subcategory, description } = body;
+    const created_at = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+    const updated_at = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
 
-    const response = await axios.post("http://localhost:3001/documents", body);
+    const status = 0;
+
+    const response = await axios.post("http://localhost:3001/documents", {
+      ...body,
+      created_at,
+      updated_at,
+      status,
+    });
 
     return NextResponse.json(response.data);
   } catch (error) {

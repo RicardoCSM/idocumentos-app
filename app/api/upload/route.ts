@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { existsSync } from "fs";
 import fs from "fs/promises";
 import path from "path";
+import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: NextRequest) {
+    
     const formData = await request.formData();
     const f = formData.get("file");
 
@@ -36,7 +38,7 @@ export async function POST(request: NextRequest) {
         fs.mkdir(destinationDirPath, { recursive: true });
     }
 
-    const fileName = file.name;
+    const fileName = `${uuidv4()}.${fileExtension}`;
     const filePath = path.join(destinationDirPath, fileName);
 
     await fs.writeFile(filePath, Buffer.from(fileArrayBuffer));
