@@ -8,11 +8,11 @@ export const authOptions: AuthOptions = {
         CredentialsProvider({
             name: 'credentials',
             credentials: {
-                username: {label: 'username', type: 'text'},
-                password: {label: 'password', type: 'password'}
+                username: { label: 'username', type: 'text' },
+                password: { label: 'password', type: 'password' }
             },
             async authorize(credentials) {
-                if(!credentials?.username || !credentials?.password) {
+                if (!credentials?.username || !credentials?.password) {
                     throw new Error('Usuário e senha obrigatórios!');
                 }
 

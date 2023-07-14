@@ -1,34 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# iDocumentos
 
-## Getting Started
+iDocumentos is a Next.js application to deal with the submission and control of incorrect documents from a university. This was done as a problem challenge for a junior front-end developer job.
 
-First, run the development server:
+----------
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+# Getting started
+
+## Installation
+
+iDocumentos was made using Next.js with the App Router and the NextAuth to the Auth. In addition, the json-server database was used on port 3001, to the visual was used Tailwind CSS.
+
+Please check the official Next.js installation guide for server requirements before you start. [Official Documentation](https://nextjs.org/docs/getting-started/installation)
+
+### Prerequisites
+
+**Node version 16.8 or later**
+
+### Cloning the repository
+
+```shell
+git@github.com:RicardoCSM/idocumentos-app.git
+cd idocumentos-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```shell
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Setup .env file
 
-## Learn More
+### Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+- `.env` - Environment variables can be set in this file
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```js
+NEXTAUTH_SECRET=
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Start the app
 
-## Deploy on Vercel
+```shell
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Start the json-server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```shell
+npm run json-server
+```
+
+The application can be accessed at [http://localhost:3000](http://localhost:3000).
+
+To register, the following predefined admins id are available:
+
+```shell
+151483512
+
+348519383
+
+306668901
+```
+
+To sign in, the following predefined user is available
+
+```shell
+Username: Admin
+Password: admin
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+# Code overview
+
+The project consists of two main screens, the first for students presents a form for sending documents that have some inconsistency. The second screen presents the administration panel with the list of documents with the information coming from the form in addition to the download and save option that changes its status and removes it from the list.
+
+## Folders
+
+- `app` - Contains the icon and the pages
+- `app/actions` - Contains the function to return the logged user
+- `app/api` - Contains the custom routes
+- `app/components` - Contains all project components
+- `app/hooks` - Contains hooks for using Modals
+- `app/interfaces` - Contains the user interface
+- `app/providers` - Contains the Toaster provider
+- `data` - Contains the categories and database json
+- `pages` - Contains the NextAuth and File download custom routes
+- `public/images` - Contains the public images
+- `upload` - Contains the uploaded documents

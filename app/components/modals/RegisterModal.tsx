@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
     FieldValues,
     SubmitHandler,
@@ -13,16 +13,18 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
         handleSubmit,
         formState: {
-            errors, 
+            errors,
         }
     } = useForm<FieldValues>({
         defaultValues: {
@@ -49,14 +51,17 @@ const RegisterModal = () => {
             })
     }
 
+    const toggle = useCallback(() => {
+        loginModal.onOpen();
+        registerModal.onClose();
+    }, [loginModal, registerModal])
 
     const bodyContent = (
-        <div className="flex flex-col gap-4">
-            <Heading 
+        <div className="flex flex-col gap-2">
+            <Heading
                 title="Seja bem-vindo ao iDocumentos"
-                subtitle="Caso seja um administrador registre-se!"
             />
-            <Input 
+            <Input
                 id="email"
                 type="email"
                 label="E-mail"
@@ -65,7 +70,7 @@ const RegisterModal = () => {
                 errors={errors}
                 required
             />
-            <Input 
+            <Input
                 id="admin_id"
                 label="ID de administrador"
                 disabled={isLoading}
@@ -73,7 +78,7 @@ const RegisterModal = () => {
                 errors={errors}
                 required
             />
-            <Input 
+            <Input
                 id="username"
                 label="Usuário"
                 disabled={isLoading}
@@ -81,7 +86,7 @@ const RegisterModal = () => {
                 errors={errors}
                 required
             />
-            <Input 
+            <Input
                 id="password"
                 type="password"
                 label="Senha"
@@ -93,7 +98,25 @@ const RegisterModal = () => {
         </div>
     )
 
-    return(
+    const footerContent = (
+        <div className="flex flex-col gap-3 mt-3">
+            <div className="text-neutral-500 text-center font-light">
+                <div className="justify-center flex flex-row items-center gap-2">
+                    <div>
+                        Já tem uma conta?
+                    </div>
+                    <div
+                        onClick={toggle}
+                        className="text-neutral-800 cursor-pointer hover:underline"
+                    >
+                        Login
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+
+    return (
         <Modal
             disabled={isLoading}
             isOpen={registerModal.isOpen}
@@ -102,6 +125,7 @@ const RegisterModal = () => {
             onClose={registerModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
+            footer={footerContent}
         />
     )
 }

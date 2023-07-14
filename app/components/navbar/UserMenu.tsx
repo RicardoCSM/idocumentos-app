@@ -64,7 +64,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         transition
                     "
                 >
-                    <AiOutlineMenu className="text-white"/>
+                    <AiOutlineMenu className="text-white" />
                     <div className="hidden md:block">
                         <Avatar />
                     </div>
@@ -94,7 +94,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                                 />
                                 <MenuItem
                                     hidden
-                                    onClick={() => {}}
+                                    onClick={() => { }}
                                     label="Cadastrar Documentos"
                                 />
                                 <MenuItem

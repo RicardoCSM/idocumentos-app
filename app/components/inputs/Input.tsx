@@ -25,7 +25,7 @@ const Input: React.FC<InputProps> = ({
     errors
 }) => {
 
-    return(
+    return (
         <div className="w-full relative">
             <label
                 className={`
@@ -35,10 +35,10 @@ const Input: React.FC<InputProps> = ({
             >
                 {label}
             </label>
-            <input 
+            <input
                 id={id}
                 disabled={disabled}
-                {... register(id, {required})}
+                {...register(id, { required })}
                 accept={accept}
                 placeholder=" "
                 type={type}

@@ -39,7 +39,7 @@ const DocumentList = () => {
         },
       });
       setDocuments(response.data);
-      setTotalItems(Number(response.headers['x-total-count'])); 
+      setTotalItems(Number(response.headers['x-total-count']));
     } catch (error) {
       toast.error('Erro ao buscar pelos documentos');
     }

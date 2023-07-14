@@ -6,7 +6,7 @@ import getCurrentUser from '../../../app/actions/getCurrentUser';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     const currentUser = await getCurrentUser();
-    if(!currentUser) {
+    if (!currentUser) {
       return res.status(405).send('Método não permitido');
     }
 
@@ -14,10 +14,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const filePath = path.join(process.cwd(), 'upload', filename as string);
     try {
       const file = fs.readFileSync(filePath);
-  
+
       res.setHeader('Content-Type', 'application/pdf');
       res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-  
+
       res.send(file);
     } catch (error) {
       console.error('Error getting file:', error);

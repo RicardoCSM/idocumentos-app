@@ -29,8 +29,8 @@ const getCategoryName = (categoryId: number) => {
     );
     return category ? category.nome : '';
 };
-  
-const getSubcategoryName = (categoryId:number , subcategoryId: number) => {
+
+const getSubcategoryName = (categoryId: number, subcategoryId: number) => {
     const category = categories.categorias.find(
         (categoria) => categoria.id === categoryId
     );
@@ -56,7 +56,7 @@ const DocumentListForm: React.FC<DocumentProps> = ({
     description,
     onSubmitSuccess
 }) => {
-    const router = useRouter(); 
+    const router = useRouter();
     const categoryName = getCategoryName(category);
     const subcategoryName = getSubcategoryName(category, subcategory);
 
@@ -66,9 +66,9 @@ const DocumentListForm: React.FC<DocumentProps> = ({
                 responseType: 'blob',
             });
             saveAs(response.data, fileName);
-          } catch (error) {
+        } catch (error) {
             console.error('Error getting file:', error);
-          }
+        }
     };
 
     const onSubmit = () => {
@@ -86,7 +86,7 @@ const DocumentListForm: React.FC<DocumentProps> = ({
     }
 
     return (
-        <div className="p-5 mt-5 border-2 rounded-md">
+        <div className="p-5 mt-4 border-2 rounded-md">
             <div className="mt-2">
                 <div className="flex flex-col sm:flex-row border-b border-gray-200 pb-4 mb-4">
                     <div className="sm:w-64 w-full text-lg font-bold mx-2 mt-3 sm:pb-0 pb-2 border-b sm:border-none border-gray-200 text-gray-800">Criado em:
@@ -122,7 +122,7 @@ const DocumentListForm: React.FC<DocumentProps> = ({
                             <div className="w-full p-1 flex-1 mx-2">
                                 <label className="p-2 sm:p-1 text-md text-zinc-400">Documento:</label>
                                 <div className="my-2 p-1 flex rounded">
-                                    <Button small label="Download" onClick={() => openFile(document)}/>
+                                    <Button small label="Download" onClick={() => openFile(document)} />
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ const DocumentListForm: React.FC<DocumentProps> = ({
                         <div className="text-sm font-normal leading-none text-gray-500">{admin}</div>
                     </div>
                     <div className="flex-1 p-1 flex flex-col md:flex-row">
-                        <Button label="Salvar" onClick={onSubmit}/>
+                        <Button label="Salvar" onClick={onSubmit} />
                     </div>
                 </div>
             </div>

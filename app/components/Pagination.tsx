@@ -21,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const showPrevButton = currentPage !== 0;
 
   return (
-    <div className="p-2">
+    <div>
       <ReactPaginate
         breakLabel={<span className="mr-4">...</span>}
         nextLabel={
@@ -41,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({
             </span>
           ) : null
         }
-        containerClassName="flex items-center justify-center mt-8 mb-4"
+        containerClassName="flex items-center justify-center mt-4 mb-4"
         pageClassName="block border border-gray-200 hover:opacity-80 w-10 h-10 flex items-center justify-center rounded-md mr-4"
         activeClassName="bg-blue-800 text-white"
       />

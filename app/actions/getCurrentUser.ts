@@ -11,7 +11,7 @@ export default async function getCurrentUser() {
     try {
         const session = await getSession();
 
-        if(!session?.user?.email) {
+        if (!session?.user?.email) {
             return null;
         }
 

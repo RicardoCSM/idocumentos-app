@@ -3,18 +3,18 @@
 import React from "react";
 
 interface MenuItemProps {
-    onClick: () => void;
-    label: string
-    hidden?: boolean
+  onClick: () => void;
+  label: string
+  hidden?: boolean
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
-    onClick,
-    label,
-    hidden
+  onClick,
+  label,
+  hidden
 }) => {
-    return (
-      <div
+  return (
+    <div
       onClick={onClick}
       className={`
         px-4
@@ -24,9 +24,9 @@ const MenuItem: React.FC<MenuItemProps> = ({
         font-semibold
         ${hidden ? 'block sm:hidden' : 'block'}
       `}>
-        {label}
-      </div>  
-    )
+      {label}
+    </div>
+  )
 }
 
 export default MenuItem;

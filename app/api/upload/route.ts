@@ -5,7 +5,7 @@ import path from "path";
 import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: NextRequest) {
-    
+
     const formData = await request.formData();
     const f = formData.get("file");
 
@@ -17,17 +17,17 @@ export async function POST(request: NextRequest) {
 
     if (file.size > 10 * 1024 * 1024) {
         return NextResponse.json(
-          { error: "O arquivo é muito grande (máximo de 10 MB)" },
-          { status: 400 }
+            { error: "O arquivo é muito grande (máximo de 10 MB)" },
+            { status: 400 }
         );
     }
-    
+
     const allowedExtensions = ["pdf", "rtf"];
     const fileExtension = file.name.split(".").pop() as string;
     if (!allowedExtensions.includes(fileExtension)) {
         return NextResponse.json(
-          { error: "A extensão do arquivo deve ser .pdf ou .rtf" },
-          { status: 400 }
+            { error: "A extensão do arquivo deve ser .pdf ou .rtf" },
+            { status: 400 }
         );
     }
 

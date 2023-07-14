@@ -10,7 +10,6 @@ import Select from '../inputs/Select';
 import TextArea from '../inputs/Textarea';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { useRouter } from "next/navigation";
 
 interface Subcategory {
   id: number;
@@ -53,38 +52,38 @@ const DocumentForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
     const file = data.document[0];
-  
+
     const formData = new FormData();
     formData.append('file', file);
-  
+
     await axios.post('/api/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
-    .then((response) => {
-      const documentName = response.data.fileName;
-      
-      axios.post('/api/documents', {
-        name: data.name,
-        email: data.email,
-        document: documentName,
-        category: Number(data.category),
-        subcategory: Number(data.subcategory),
-        description: data.description
-      })
-        .then(() => {
-          setIsLoading(false);
-          toast.success('Documento enviado com sucesso');
+      .then((response) => {
+        const documentName = response.data.fileName;
+
+        axios.post('/api/documents', {
+          name: data.name,
+          email: data.email,
+          document: documentName,
+          category: Number(data.category),
+          subcategory: Number(data.subcategory),
+          description: data.description
         })
-        .catch((error) => {
-          toast.error(error.response.data.error);
-        });
+          .then(() => {
+            setIsLoading(false);
+            toast.success('Documento enviado com sucesso');
+          })
+          .catch((error) => {
+            toast.error(error.response.data.error);
+          });
         reset();
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
         toast.error(error.response.data.error);
-    });
+      });
   };
 
   return (

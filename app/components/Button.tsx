@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     type = "button"
 }) => {
 
-    return(
+    return (
         <button
             onClick={onClick}
             disabled={disabled}
@@ -36,17 +36,17 @@ const Button: React.FC<ButtonProps> = ({
                 hover:opacity-80
                 transition
                 w-full
-                ${outline ? 'bg-white' :  'bg-blue-800'}
-                ${outline ? 'border-black' :  'border-blue-800'}
-                ${outline ? 'text-black' :  'text-white'}
-                ${small ? 'py-3' :  'py-3'}
-                ${small ? 'text-sm' :  'text-md'}
-                ${small ? 'font-light' :  'font-semibold'}
-                ${small ? 'border-[1px]' :  'border-2'}
+                ${outline ? 'bg-white' : 'bg-blue-800'}
+                ${outline ? 'border-black' : 'border-blue-800'}
+                ${outline ? 'text-black' : 'text-white'}
+                ${small ? 'py-3' : 'py-3'}
+                ${small ? 'text-sm' : 'text-md'}
+                ${small ? 'font-light' : 'font-semibold'}
+                ${small ? 'border-[1px]' : 'border-2'}
             `}
         >
             {Icon && (
-                <Icon 
+                <Icon
                     size={24}
                     className="
                         absolute

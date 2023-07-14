@@ -36,14 +36,14 @@ const Modal: React.FC<ModalProps> = ({
         setShowModal(isOpen);
     }, [isOpen]);
 
-    const handleClose = useCallback(()  => {
+    const handleClose = useCallback(() => {
         if (disabled) {
             return;
         }
 
         setShowModal(false);
         setTimeout(() => {
-            onClose(); 
+            onClose();
         }, 300)
     }, [onClose, disabled]);
 
@@ -56,7 +56,7 @@ const Modal: React.FC<ModalProps> = ({
     }, []);
 
     const handleSecondaryAction = useCallback(() => {
-        if(disabled || !secondaryAction) {
+        if (disabled || !secondaryAction) {
             return;
         }
 
@@ -98,7 +98,6 @@ const Modal: React.FC<ModalProps> = ({
                         md:h-auto
                     "
                 >
-                    {/* CONTENT */}
                     <div
                         className={`
                             translate
@@ -126,7 +125,6 @@ const Modal: React.FC<ModalProps> = ({
                                 focus:outline-none
                             "
                         >
-                            {/* HEADER */}
                             <div className="
                                 flex
                                 items-center
@@ -137,7 +135,7 @@ const Modal: React.FC<ModalProps> = ({
                                 border-b-[1px]
                             "
                             >
-                                <button 
+                                <button
                                     onClick={handleClose}
                                     className="
                                         p-1
@@ -155,12 +153,10 @@ const Modal: React.FC<ModalProps> = ({
                                 </div>
                             </div>
 
-                            {/* BODY */}
                             <div className="relative p-6 flex-auto">
-                                { body }
+                                {body}
                             </div>
 
-                            {/* FOOTER */}
                             <div className="flex flex-col gap-2 p-6">
                                 <div className="
                                     flex
@@ -170,12 +166,12 @@ const Modal: React.FC<ModalProps> = ({
                                     w-full
                                 ">
                                     {secondaryAction && secondaryActionLabel && (
-                                        <Button 
-                                            disabled={disabled} 
-                                            label={secondaryActionLabel} 
+                                        <Button
+                                            disabled={disabled}
+                                            label={secondaryActionLabel}
                                             onClick={handleSecondaryAction}
                                             outline
-                                        />                 
+                                        />
                                     )}
                                     <Button
                                         disabled={disabled}
@@ -183,14 +179,13 @@ const Modal: React.FC<ModalProps> = ({
                                         onClick={handleSubmit}
                                     />
                                 </div>
+                                {footer}
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </>
-
     );
 }
 

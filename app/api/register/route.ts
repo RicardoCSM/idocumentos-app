@@ -38,7 +38,7 @@ export async function POST(request: Request) {
 
   try {
     const { email, admin_id, username, password } = body;
-    
+
     const isEmailUsed = await isEmailAlreadyUsed(email);
     if (isEmailUsed) {
       return NextResponse.json(
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     const isUsernameUsed = await isUsernameAlreadyUsed(username);
     if (isUsernameUsed) {
       return NextResponse.json(
-        { error: "Esse nome de usuário já está em uso" }, 
+        { error: "Esse nome de usuário já está em uso" },
         { status: 400 }
       );
     }
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     const isAdminIdUsed = await isAdminIdAlreadyUsed(admin_id);
     if (isAdminIdUsed) {
       return NextResponse.json(
-        { error: "Esse administrador já foi cadastrado" }, 
+        { error: "Esse administrador já foi cadastrado" },
         { status: 400 }
       );
     }

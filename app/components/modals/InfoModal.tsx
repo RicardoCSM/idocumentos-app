@@ -10,7 +10,7 @@ const InfoModal = () => {
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading
-                center  
+                center
                 title="iDocumentos"
                 subtitle="Notifique sobre um documento incorreto!"
             />
@@ -27,7 +27,7 @@ const InfoModal = () => {
         </div>
     )
 
-    return(
+    return (
         <Modal
             isOpen={infoModal.isOpen}
             title="Documentos incorretos?"
