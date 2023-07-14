@@ -1,15 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
-import getCurrentUser from '../../../app/actions/getCurrentUser';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
-    const currentUser = await getCurrentUser();
-    if (!currentUser) {
-      return res.status(405).send('Método não permitido');
-    }
-
     const { filename } = req.query;
     const filePath = path.join(process.cwd(), 'upload', filename as string);
     try {
