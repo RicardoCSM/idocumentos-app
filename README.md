@@ -19,7 +19,7 @@ Please check the official Next.js installation guide for server requirements bef
 ### Cloning the repository
 
 ```shell
-git@github.com:RicardoCSM/idocumentos-app.git
+git clone https://github.com/RicardoCSM/idocumentos-app.git
 cd idocumentos-app
 ```
 
